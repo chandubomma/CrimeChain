@@ -26,19 +26,25 @@ export const ContractsProvider = ({children})=>{
     const [searchId,setSearchId] = useState(1);
 
     useEffect(()=>{
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
+      if(ethereum)
+      {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
       
-      crimeRecord = new ethers.Contract(CRIMERECORD_CONTRACT_ADDRESS, crimeRecordAbi, signer);
-      evidence = new ethers.Contract(EVIDENCE_CONTRACT_ADDRESS, evidenceAbi, signer);
-      identity = new ethers.Contract(IDENTITY_CONTRACT_ADDRESS, identityAbi, signer);
-      user = new ethers.Contract(USER_CONTRACT_ADDRESS, userAbi, signer);
+        crimeRecord = new ethers.Contract(CRIMERECORD_CONTRACT_ADDRESS, crimeRecordAbi, signer);
+        evidence = new ethers.Contract(EVIDENCE_CONTRACT_ADDRESS, evidenceAbi, signer);
+        identity = new ethers.Contract(IDENTITY_CONTRACT_ADDRESS, identityAbi, signer);
+        user = new ethers.Contract(USER_CONTRACT_ADDRESS, userAbi, signer);
     
+      }
     },[])
 
     const checkIfWalletIsConnect = async () => {
         try {
-          if (!ethereum) return alert("Please install MetaMask.");
+          if (!ethereum) {
+           // alert("Please install MetaMask.");
+            return false;
+          }
     
           const accounts = await ethereum.request({ method: "eth_accounts" });
     
@@ -58,7 +64,7 @@ export const ContractsProvider = ({children})=>{
 
     const connectWallet = async () => {
         try {
-          if (!ethereum) return alert("Please install MetaMask.");
+          //if (!ethereum) return alert("Please install MetaMask.");
     
           const accounts = await ethereum.request({ method: "eth_requestAccounts", });
     

@@ -3,14 +3,17 @@ import { GiCheckedShield } from 'react-icons/gi';
 import { ContractsContext } from "../context/ContractsContext";
 import { useNavigate } from "react-router-dom";
 
-
+const { ethereum } = window;
 
 const LandingPage = () => {
   const {  connectWallet,checkIfWalletIsConnect } = useContext(ContractsContext);
   let navigate = useNavigate();
   const onClickHandler =async ()=>{
-      await connectWallet()
-      if(checkIfWalletIsConnect())navigate('/user');
+      if(!ethereum)alert("Please install Metamask!");
+      else{
+        await connectWallet();
+        if(checkIfWalletIsConnect())navigate('/user');
+      } 
   }
   return (
     <div className='bg-black w-screen h-screen flex flex-col'>
