@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  font-family: 'Chakra Petch', sans-serif;
+  margin: 0px;
+  padding: 0px;
+  
+}
+
+.glassmorph{
+  background: rgba( 255, 255, 255, 0.2 );
+  box-shadow: 0 8px 32px 0 rgba(129, 129, 131, 0.37);
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.glassmorph3{
+  background: rgba(171, 169, 169, 0.836);
+  box-shadow: 0 8px 32px 0 rgba(129, 129, 131, 0.37);
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.glassmorph2{
+  background: rgba( 255, 255, 255, 0.2 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+
+
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: black;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
